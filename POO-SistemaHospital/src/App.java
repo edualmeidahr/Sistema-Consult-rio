@@ -46,34 +46,13 @@ public class App {
                     break;
 
                 case 7:
-                    System.out.println("CPF do paciente: ");
-                    String cpfPaciente = scanner.nextLine();
-                    System.out.println("CRM do medico:");
-                    int crmMedico = scanner.nextInt();
-
-                    for (Consulta consulta : consultorio.getConsultas()) {
-                        if (consulta.getCpfPaciente().equals(cpfPaciente) && consulta.getCrmMedico() == crmMedico) {
-
-                            for (Medico medico : consultorio.getMedicos()) {
-                                if (medico.getCrm() == crmMedico) {
-                                    System.out.println("Médico da consulta: ");
-                                    medico.imprimirMedico();
-                                }
-                            }
-
-                            for (Paciente paciente : consultorio.getPacientes()) {
-                                if (paciente.getCpf().equals(cpfPaciente)) {
-                                    System.out.println("Paciente:");
-                                    paciente.imprimirPaciente();
-                                }
-                            }
-
-                            consulta.imprimirConsulta();
-
-                        }
-                    }
-                    System.out.println("Nenhum consulta encontrada com essas informações!");
-
+                 System.out.println("Digite o CRM do Médico:");
+                 int crm = scanner.nextInt();
+                 scanner.nextLine();
+                 System.out.println("CPF do paciente:");
+                 String cpf = scanner.nextLine();
+                 consultorio.imprimirUmaConsulta(crm, cpf);
+                 break;
                 case 8:
                     consultorio.removerMedico();
                     break;

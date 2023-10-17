@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 import Pessoas.*;
 
 public class Consultorio {
@@ -178,21 +179,25 @@ public class Consultorio {
         }
 
         
-        public void removerConsulta(){
+        public void removerConsulta() {
             System.out.println("CPF do paciente: ");
             String cpfPaciente = scanner.nextLine();
             System.out.println("CRM do medico:");
             int crmMedico = scanner.nextInt();
             scanner.nextLine();
-
-            for(Consulta consulta : consultas){
-                if(consulta.getCpfPaciente().equals(cpfPaciente) && consulta.getCrmMedico() == crmMedico){
-                    consultas.remove(consulta);
+        
+            Iterator<Consulta> iterator = consultas.iterator();
+            while (iterator.hasNext()) {
+                Consulta consulta = iterator.next();
+                if (consulta.getCpfPaciente().equals(cpfPaciente) && consulta.getCrmMedico() == crmMedico) {
+                    iterator.remove();
                     System.out.println("CONSULTA REMOVIDA COM SUCESSO!");
+                    return;
                 }
             }
-            System.out.println("Nenhum consulta encontrada com essas informações!");
+            System.out.println("Nenhuma consulta encontrada com essas informações!");
         }
+        
 
 
         public void imprimirListaDePaciente(){
@@ -228,6 +233,21 @@ public class Consultorio {
                     consulta.imprimirConsulta();
                 }
             }
+        }
+
+        public void imprimirUmaConsulta(int CRM, String cpf){
+            if(consultas.isEmpty()){
+                System.out.println("A lista está vazia!");
+            }else{
+                for(Consulta consulta : consultas){
+                    if(consulta.getCrmMedico() == CRM && consulta.getCpfPaciente().equals(cpf)){
+                        consulta.imprimirConsulta();
+                        return;
+                    }
+                }
+
+            }
+            System.out.println("Consulta não encontrada!");
         }
         
         
