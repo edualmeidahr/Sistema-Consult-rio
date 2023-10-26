@@ -1,1 +1,1 @@
-# Sistema-Consultorio TRABALHO 1 DE PROGRAMAÇÃO ORIENTADA A OBJETO NO CEFET MG
+Trabalho 1 de Programação orientada a objetos
